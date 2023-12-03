@@ -1,0 +1,25 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/x-www-form-urlencoded'
+    })
+};
+
+interface Post {
+    resultCode: string;
+    resultMsg: string;
+    content: any[];
+}
+
+@Injectable()
+  export class AppService {
+    private baseUrl = 'http://13.229.141.13:8089/'
+    constructor(private httpClient: HttpClient) {}
+    
+    getPosts(): Observable<Post> {
+        return this.httpClient.get<Post>(this.baseUrl + 'posts');
+    }
+  }
