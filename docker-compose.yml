@@ -1,0 +1,20 @@
+version: '3.6'
+services:
+  "aws-blog":
+    build: ""
+    image: aws-blog:latest
+    ports:
+      - "8086:8086"
+    volumes:
+      - "./logs/aws-blog:/data/logs/aws-blog"
+    env_file:
+      - .env
+    restart: always
+    deploy:
+      replicas: 1
+      update_config:
+        delay: 10s
+        parallelism: 2
+      restart_policy:
+        condition: always
+
