@@ -16,7 +16,7 @@ interface Post {
 
 @Injectable()
   export class AppService {
-    private baseUrl = 'http://13.229.141.13:8089/'
+    private baseUrl = 'http://18.140.98.89:8089/'
     constructor(private httpClient: HttpClient) {}
     
     getPosts(): Observable<Post> {
